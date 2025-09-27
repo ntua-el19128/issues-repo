@@ -48,3 +48,28 @@ export default tseslint.config({
   },
 })
 ```
+
+## Python Scripts
+
+This project includes Python utility scripts in the `scripts/` directory:
+
+### Hello World Script
+
+A demonstration Python script that showcases basic Python integration within the frontend project.
+
+**Usage:**
+```bash
+# Basic hello world
+python scripts/hello_world.py
+
+# Personalized greeting
+python scripts/hello_world.py --name "Your Name"
+
+# Display project information
+python scripts/hello_world.py --info
+
+# Show help
+python scripts/hello_world.py --help
+```
+
+**Purpose:** Demonstrates Python scripting capabilities alongside frontend development and serves as a template for additional utility scripts.
