@@ -58,6 +58,27 @@ const sampleUsers = [
   }
 ];
 
+interface FilteredUser {
+  avatar?: string;
+  name?: string;
+  email?: string;
+  bio?: string;
+  location?: string;
+  socialLinks?: Array<{ platform: 'github' | 'twitter' | 'linkedin' | 'website'; url: string; }>;
+  restricted?: boolean;
+  profileIndex?: number;
+}
+
+const filteredUsers: FilteredUser[] = sampleUsers.map((user, index) => {
+  if (user.restricted) {
+    return {
+      restricted: true,
+      profileIndex: index
+    };
+  }
+  return user;
+});
+
 function App() {
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">
@@ -73,7 +94,7 @@ function App() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {sampleUsers.map((user, index) => (
+          {filteredUsers.map((user, index) => (
             <UserProfile
               key={index}
               avatar={user.avatar}
@@ -81,8 +102,9 @@ function App() {
               email={user.email}
               bio={user.bio}
               location={user.location}
-              socialLinks={user.socialLinks}
+              socialLinks={user.socialLinks || []}
               restricted={user.restricted}
+              profileIndex={user.profileIndex}
             />
           ))}
         </div>
